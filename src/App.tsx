@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import VmBoot from "./components/VmBoot";
 import UsbBoot from "./components/UsbBoot";
+import RealSystem from "./components/RealSystem";
 import { Reveal, Scramble, SectionHead } from "./components/bits";
 
 function Clock() {
@@ -82,6 +83,9 @@ export default function App() {
             </a>
             <a href="#usb" className="font-mono text-[11px] tracking-[0.15em] text-moss uppercase transition-colors hover:text-phos">
               01 USB
+            </a>
+            <a href="#real" className="font-mono text-[11px] tracking-[0.15em] text-moss uppercase transition-colors hover:text-phos">
+              02 Réel
             </a>
           </nav>
           <Clock />
@@ -209,6 +213,19 @@ export default function App() {
             sub="Deuxième objectif : une clé USB bootable qui démarre V6-X sur vrai matériel. Même image, même noyau — mais cette fois, les pilotes GPU, WiFi et USB 3 doivent fonctionner sans émulateur."
           />
           <UsbBoot />
+        </div>
+      </section>
+
+      {/* ═══════════ 02 · SYSTÈME RÉEL ═══════════ */}
+      <section id="real" className="border-t border-line">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-28 scroll-mt-16">
+          <SectionHead
+            index="02"
+            kicker="code source complet · prêt à compiler"
+            title="SYSTÈME RÉEL"
+            sub="Le kit de démarrage V6-X : bootloader en NASM, noyau en C, script de liaison, Makefile. Copiez les fichiers, installez les dépendances, compilez, testez dans QEMU ou sur USB. C'est la base sur laquelle vous allez construire les 13 appels système et les 15 modules."
+          />
+          <RealSystem />
         </div>
       </section>
 

@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+@theme {
+  --font-crt: "VT323", "Courier New", monospace;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+
+  --color-night: #070b08;
+  --color-panel: #0b110c;
+  --color-panel2: #0f1710;
+  --color-panel3: #131d14;
+  --color-line: #20301f;
+  --color-line2: #2c402b;
+  --color-ink: #dcead9;
+  --color-moss: #7d947c;
+  --color-dim: #55694f;
+  --color-phos: #5ce68b;
+  --color-phos2: #9ff0b6;
+  --color-amber: #ffb454;
+  --color-amber2: #ffd394;
+
+  --animate-blink: blink 1.06s step-end infinite;
+  --animate-pulse-dot: pulseDot 1.8s ease-in-out infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-night);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(52rem 34rem at 12% -6%, rgba(92, 230, 139, 0.09), transparent 62%),
+    radial-gradient(46rem 30rem at 96% 12%, rgba(255, 180, 84, 0.06), transparent 60%),
+    repeating-linear-gradient(0deg, rgba(92, 230, 139, 0.024) 0 1px, transparent 1px 56px),
+    repeating-linear-gradient(90deg, rgba(92, 230, 139, 0.02) 0 1px, transparent 1px 56px);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.22) 0 1px, transparent 1px 3px),
+    radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(2, 6, 3, 0.5) 100%);
+}
+
+::selection {
+  background: rgba(92, 230, 139, 0.85);
+  color: #06130a;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #2c402b transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #2c402b;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.glow {
+  text-shadow: 0 0 14px rgba(92, 230, 139, 0.45), 0 0 42px rgba(92, 230, 139, 0.18);
+}
+
+.glow-amber {
+  text-shadow: 0 0 14px rgba(255, 180, 84, 0.4), 0 0 40px rgba(255, 180, 84, 0.16);
+}
+
+.term-glow {
+  text-shadow: 0 0 8px rgba(92, 230, 139, 0.5);
+}
+
+.rvl {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rvl.rvl-on {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.rvl-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rvl-left.rvl-on {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.72); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  body::after {
+    animation: none;
+  }
+  .rvl,
+  .rvl-left {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

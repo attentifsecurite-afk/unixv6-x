@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import VmBoot from "./components/VmBoot";
 import UsbBoot from "./components/UsbBoot";
 import RealSystem from "./components/RealSystem";
+import HologramAgent from "./components/HologramAgent";
 import { Reveal, Scramble, SectionHead } from "./components/bits";
 
 function Clock() {
@@ -86,6 +87,9 @@ export default function App() {
             </a>
             <a href="#real" className="font-mono text-[11px] tracking-[0.15em] text-moss uppercase transition-colors hover:text-phos">
               02 Réel
+            </a>
+            <a href="#agent" className="font-mono text-[11px] tracking-[0.15em] text-moss uppercase transition-colors hover:text-phos">
+              03 Agent
             </a>
           </nav>
           <Clock />
@@ -226,6 +230,19 @@ export default function App() {
             sub="Le kit de démarrage V6-X : bootloader en NASM, noyau en C, script de liaison, Makefile. Copiez les fichiers, installez les dépendances, compilez, testez dans QEMU ou sur USB. C'est la base sur laquelle vous allez construire les 13 appels système et les 15 modules."
           />
           <RealSystem />
+        </div>
+      </section>
+
+      {/* ═══════════ 03 · AGENT IA HOLOGRAPHIQUE ═══════════ */}
+      <section id="agent" className="border-t border-line bg-panel/40">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-28 scroll-mt-16">
+          <SectionHead
+            index="03"
+            kicker="interface vocale · français humanisé"
+            title="AGENT IA HOLOGRAPHIQUE"
+            sub="Un agent IA vivant qui vous parle en français naturel. Parlez-lui ou tapez, il comprend vos intentions et répond avec une voix humaine. Détection automatique de la parole, synthèse vocale française, interface holographique interactive."
+          />
+          <HologramAgent />
         </div>
       </section>
 
